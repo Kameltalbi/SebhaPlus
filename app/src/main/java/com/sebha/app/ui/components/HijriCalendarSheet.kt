@@ -245,6 +245,10 @@ fun HijriCalendarPage(hijriCorrectionDays: Int) {
 
 @Composable
 private fun DailyDuaCard(dua: DailyDua) {
+    val language = LocalContext.current.resources.configuration.locales[0].language
+    val occasionLabel = "${dua.hijriDay} ${HijriDateHelper.monthName(dua.hijriMonth, language)}"
+    val meaning = dua.translationFor(language)
+
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
@@ -274,29 +278,25 @@ private fun DailyDuaCard(dua: DailyDua) {
                         fontWeight = FontWeight.SemiBold
                     )
                     Text(
-                        text = dua.theme,
+                        text = dua.themeFor(language),
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
             }
 
-            if (dua.occasion.isNotBlank()) {
-                Spacer(modifier = Modifier.height(10.dp))
-                Text(
-                    text = dua.occasion,
-                    style = MaterialTheme.typography.labelLarge,
-                    color = SebhaGold,
-                    fontWeight = FontWeight.Medium
-                )
-            }
+            Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                text = occasionLabel,
+                style = MaterialTheme.typography.labelLarge,
+                color = SebhaGold,
+                fontWeight = FontWeight.Medium
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Arabic text is always the dua to recite.
-            // Helper text follows Settings language only (never stack FR + EN + AR).
-            // Keep compact (≤2 lines) so the calendar stays the page focus.
-            val language = LocalContext.current.resources.configuration.locales[0].language
+            // Arabic script only for the dua — never Latin transliteration.
+            // Meaning follows Settings language (FR / EN); Arabic UI shows dua alone.
             Text(
                 text = dua.duaAr,
                 style = MaterialTheme.typography.bodyMedium.copy(
@@ -311,32 +311,17 @@ private fun DailyDuaCard(dua: DailyDua) {
                 modifier = Modifier.fillMaxWidth()
             )
 
-            when {
-                language.startsWith("ar") -> Unit
-                language.startsWith("en") -> {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = dua.transliteration,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Center,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
-                else -> {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = dua.translationFr,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        textAlign = TextAlign.Start,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
+            if (meaning != null) {
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(
+                    text = meaning,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = if (language.startsWith("en")) TextAlign.Center else TextAlign.Start,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
 
             Spacer(modifier = Modifier.height(10.dp))
