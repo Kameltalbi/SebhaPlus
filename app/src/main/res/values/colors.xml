@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sebha_background">#F7F5EF</color>
+    <color name="sebha_primary">#12372A</color>
+    <color name="sebha_gold">#C8A45A</color>
+    <color name="sebha_text">#202421</color>
+    <color name="sebha_text_secondary">#7A807C</color>
+    <color name="ic_launcher_background">#12372A</color>
+</resources>

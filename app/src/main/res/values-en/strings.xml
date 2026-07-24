@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sebha+</string>
+
+    <string name="settings">Settings</string>
+    <string name="content_desc_settings">Open settings</string>
+
+    <string name="tap">Tap</string>
+    <string name="progress_format">%1$d / %2$d</string>
+    <string name="counter_content_desc">Counter: %1$d of %2$d</string>
+    <string name="daily_counter_content_desc">Today’s counter: %1$d</string>
+    <string name="tap_button_content_desc">Increment counter</string>
+    <string name="cumulative_total_format">Cumulative total: %1$d</string>
+    <string name="cumulative_total">Cumulative total</string>
+
+    <string name="goal">Goal</string>
+    <string name="vibration">Vibration</string>
+    <string name="sound">Sound</string>
+    <string name="hijri_correction">Hijri date correction</string>
+    <string name="language">Language</string>
+    <string name="language_french">Français</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="reset_daily_total">Reset today’s total</string>
+    <string name="reset_cumulative_total">Reset to zero</string>
+    <string name="reset_daily_confirm_title">Reset today’s total?</string>
+    <string name="reset_daily_confirm_message">Today’s counter will be set back to zero.</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+
+    <string name="footer_sebha">Sebha</string>
+    <string name="footer_hijri">Hijri</string>
+    <string name="footer_holidays">Holidays</string>
+    <string name="footer_settings">Settings</string>
+    <string name="hijri_calendar">Hijri calendar</string>
+    <string name="holidays">Holidays</string>
+    <string name="feature_coming_soon">This section will be added soon.</string>
+    <string name="religious_holidays_year">Religious dates for %1$d AH</string>
+    <string name="hijri_holiday_date">%1$d %2$s %3$d AH</string>
+    <string name="hijri_holiday_date_range">%1$d–%2$d %3$s %4$d AH</string>
+    <string name="holidays_today_section">Today</string>
+    <string name="holidays_next_section">Next event</string>
+    <string name="upcoming_religious_holidays">Holidays in the next 12 months</string>
+    <string name="holidays_no_event_today">No special event today</string>
+    <string name="holidays_in_days">In %1$d days</string>
+    <string name="holiday_islamic_new_year">Islamic New Year</string>
+    <string name="holiday_ashura">Ashura</string>
+    <string name="holiday_mawlid">Mawlid Nabawi</string>
+    <string name="holiday_rajab_start">Start of Rajab</string>
+    <string name="holiday_isra_miraj">Al-Isra’ wal-Mi‘raj</string>
+    <string name="holiday_mid_shaban">Mid-Sha‘ban</string>
+    <string name="holiday_ramadan_start">Start of Ramadan</string>
+    <string name="holiday_battle_of_badr">Battle of Badr</string>
+    <string name="holiday_night_21">Night of the 21st</string>
+    <string name="holiday_night_23">Night of the 23rd</string>
+    <string name="holiday_night_25">Night of the 25th</string>
+    <string name="holiday_laylat_al_qadr">Night of Decree</string>
+    <string name="holiday_ramadan_end">End of Ramadan</string>
+    <string name="holiday_eid_al_fitr">Eid al-Fitr</string>
+    <string name="holiday_hajj_start">Start of Hajj</string>
+    <string name="holiday_arafah">Day of Arafah</string>
+    <string name="holiday_eid_al_adha">Eid al-Adha</string>
+    <string name="holiday_tashreeq">Days of Tashreeq</string>
+    <string name="hijri_calendar_today">Today: %1$s</string>
+    <string name="hijri_calendar_correction_label">Applied correction: %1$s day(s)</string>
+    <string name="previous_month">Previous month</string>
+    <string name="next_month">Next month</string>
+
+    <string name="hijri_new_month_title">New Hijri month</string>
+    <string name="hijri_new_month_message">Has the new Hijri month started?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="goal_reached">Goal reached</string>
+</resources>

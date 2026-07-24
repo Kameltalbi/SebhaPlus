@@ -1,0 +1,16 @@
+---
+description: Où retrouver la signature Play (keystore) de Sebha+
+alwaysApply: true
+---
+
+# Signature Google Play — Sebha+
+
+Quand l’utilisateur demande le keystore, les mots de passe, l’AAB, ou la signature Play :
+
+1. Lire **`private/PLAY_SIGNING.md`** (source de vérité locale).
+2. Fichiers clés :
+   - `sebha-upload.jks` (racine du projet)
+   - `keystore.properties` (racine du projet)
+3. Package Play : **`com.kameltalbi.sebha`**
+4. Ne jamais committer `private/`, `*.jks`, ni `keystore.properties`.
+5. Pour régénérer l’AAB release : `./gradlew bundleRelease` puis copier sur le Bureau si demandé.

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sebha+</string>
+
+    <string name="settings">الإعدادات</string>
+    <string name="content_desc_settings">فتح الإعدادات</string>
+
+    <string name="tap">اضغط</string>
+    <string name="progress_format">%1$d / %2$d</string>
+    <string name="counter_content_desc">العداد: %1$d من %2$d</string>
+    <string name="daily_counter_content_desc">عداد اليوم: %1$d</string>
+    <string name="tap_button_content_desc">زيادة العداد</string>
+    <string name="cumulative_total_format">المجموع التراكمي: %1$d</string>
+    <string name="cumulative_total">المجموع التراكمي</string>
+
+    <string name="goal">الهدف</string>
+    <string name="vibration">اهتزاز</string>
+    <string name="sound">الصوت</string>
+    <string name="hijri_correction">تصحيح التاريخ الهجري</string>
+    <string name="language">اللغة</string>
+    <string name="language_french">Français</string>
+    <string name="language_english">English</string>
+    <string name="language_arabic">العربية</string>
+    <string name="reset_daily_total">إعادة تعيين مجموع اليوم</string>
+    <string name="reset_cumulative_total">تصفير</string>
+    <string name="reset_daily_confirm_title">إعادة تعيين مجموع اليوم؟</string>
+    <string name="reset_daily_confirm_message">سيتم إرجاع عداد اليوم إلى الصفر.</string>
+    <string name="confirm">تأكيد</string>
+    <string name="cancel">إلغاء</string>
+    <string name="close">إغلاق</string>
+
+    <string name="footer_sebha">سبحة</string>
+    <string name="footer_hijri">هجري</string>
+    <string name="footer_holidays">مناسبات</string>
+    <string name="footer_settings">إعدادات</string>
+    <string name="hijri_calendar">التقويم الهجري</string>
+    <string name="holidays">المناسبات</string>
+    <string name="feature_coming_soon">ستتم إضافة هذا القسم قريبًا.</string>
+    <string name="religious_holidays_year">المناسبات الدينية لعام %1$d هـ</string>
+    <string name="hijri_holiday_date">%1$d %2$s %3$d هـ</string>
+    <string name="hijri_holiday_date_range">%1$d–%2$d %3$s %4$d هـ</string>
+    <string name="holidays_today_section">اليوم</string>
+    <string name="holidays_next_section">الحدث القادم</string>
+    <string name="upcoming_religious_holidays">مناسبات الأشهر الاثني عشر القادمة</string>
+    <string name="holidays_no_event_today">لا توجد مناسبة خاصة اليوم</string>
+    <string name="holidays_in_days">بعد %1$d يومًا</string>
+    <string name="holiday_islamic_new_year">رأس السنة الهجرية</string>
+    <string name="holiday_ashura">عاشوراء</string>
+    <string name="holiday_mawlid">المولد النبوي الشريف</string>
+    <string name="holiday_rajab_start">غرة رجب</string>
+    <string name="holiday_isra_miraj">الإسراء والمعراج</string>
+    <string name="holiday_mid_shaban">ليلة النصف من شعبان</string>
+    <string name="holiday_ramadan_start">أول رمضان</string>
+    <string name="holiday_battle_of_badr">غزوة بدر</string>
+    <string name="holiday_night_21">ليلة 21 رمضان</string>
+    <string name="holiday_night_23">ليلة 23 رمضان</string>
+    <string name="holiday_night_25">ليلة 25 رمضان</string>
+    <string name="holiday_laylat_al_qadr">ليلة القدر</string>
+    <string name="holiday_ramadan_end">آخر رمضان</string>
+    <string name="holiday_eid_al_fitr">عيد الفطر</string>
+    <string name="holiday_hajj_start">بداية الحج</string>
+    <string name="holiday_arafah">يوم عرفة</string>
+    <string name="holiday_eid_al_adha">عيد الأضحى</string>
+    <string name="holiday_tashreeq">أيام التشريق</string>
+    <string name="hijri_calendar_today">اليوم: %1$s</string>
+    <string name="hijri_calendar_correction_label">التصحيح المطبق: %1$s يوم</string>
+    <string name="previous_month">الشهر السابق</string>
+    <string name="next_month">الشهر التالي</string>
+
+    <string name="hijri_new_month_title">شهر هجري جديد</string>
+    <string name="hijri_new_month_message">هل بدأ الشهر الهجري الجديد؟</string>
+    <string name="yes">نعم</string>
+    <string name="no">لا</string>
+
+    <string name="goal_reached">تم بلوغ الهدف</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sebha_background">#0E1A15</color>
+    <color name="sebha_primary">#C8A45A</color>
+    <color name="sebha_gold">#C8A45A</color>
+    <color name="sebha_text">#F7F5EF</color>
+    <color name="sebha_text_secondary">#9AA39C</color>
+</resources>
