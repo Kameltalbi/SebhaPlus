@@ -39,10 +39,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDirection
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sebha.app.R
@@ -293,40 +293,53 @@ private fun DailyDuaCard(dua: DailyDua) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
+            // Arabic text is always the dua to recite.
+            // Helper text follows Settings language only (never stack FR + EN + AR).
+            // Keep compact (≤2 lines) so the calendar stays the page focus.
+            val language = LocalContext.current.resources.configuration.locales[0].language
             Text(
                 text = dua.duaAr,
-                style = MaterialTheme.typography.titleLarge.copy(
+                style = MaterialTheme.typography.bodyMedium.copy(
                     textDirection = TextDirection.Rtl
                 ),
                 color = SebhaPrimary,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Medium,
-                lineHeight = 34.sp,
+                lineHeight = 22.sp,
+                maxLines = 2,
+                overflow = TextOverflow.Ellipsis,
                 modifier = Modifier.fillMaxWidth()
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
-
-            Text(
-                text = dua.transliteration,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center,
-                fontStyle = FontStyle.Italic,
-                modifier = Modifier.fillMaxWidth()
-            )
+            when {
+                language.startsWith("ar") -> Unit
+                language.startsWith("en") -> {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = dua.transliteration,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Center,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+                else -> {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = dua.translationFr,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = TextAlign.Start,
+                        maxLines = 2,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+            }
 
             Spacer(modifier = Modifier.height(10.dp))
-
-            Text(
-                text = dua.translationFr,
-                style = MaterialTheme.typography.bodyLarge,
-                color = MaterialTheme.colorScheme.onSurface,
-                textAlign = TextAlign.Start,
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(14.dp))
 
             Text(
                 text = stringResource(
