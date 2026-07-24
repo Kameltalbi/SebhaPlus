@@ -37,6 +37,7 @@ data class SebhaUiState(
     val showSettings: Boolean = false,
     val showHijriMonthPrompt: Boolean = false,
     val showResetConfirm: Boolean = false,
+    val showResetTotalConfirm: Boolean = false,
     val isLoaded: Boolean = false
 )
 
@@ -63,6 +64,10 @@ class SebhaViewModel(
         initialValue = SebhaUiState()
     )
 
+    init {
+        viewModelScope.launch { repository.ensureDailyRollover() }
+    }
+
     /** Increments the counter by one and persists immediately. */
     fun onTap() {
         val current = uiState.value
@@ -86,7 +91,11 @@ class SebhaViewModel(
     fun openSettings() = sheetState.update { it.copy(showSettings = true) }
 
     fun closeSettings() = sheetState.update {
-        it.copy(showSettings = false, showResetConfirm = false)
+        it.copy(
+            showSettings = false,
+            showResetConfirm = false,
+            showResetTotalConfirm = false
+        )
     }
 
     fun setGoal(goal: Int) {
@@ -117,7 +126,11 @@ class SebhaViewModel(
 
     fun requestResetConfirm() = sheetState.update { it.copy(showResetConfirm = true) }
 
-    fun dismissResetConfirm() = sheetState.update { it.copy(showResetConfirm = false) }
+    fun requestResetTotalConfirm() = sheetState.update { it.copy(showResetTotalConfirm = true) }
+
+    fun dismissResetConfirm() = sheetState.update {
+        it.copy(showResetConfirm = false, showResetTotalConfirm = false)
+    }
 
     fun resetDailyCount() {
         viewModelScope.launch {
@@ -129,7 +142,7 @@ class SebhaViewModel(
     fun resetTotalCount() {
         viewModelScope.launch {
             repository.resetTotalCount()
-            sheetState.update { it.copy(showResetConfirm = false) }
+            sheetState.update { it.copy(showResetTotalConfirm = false) }
         }
     }
 
@@ -184,13 +197,15 @@ class SebhaViewModel(
             showSettings = sheets.showSettings,
             showHijriMonthPrompt = shouldPrompt,
             showResetConfirm = sheets.showResetConfirm,
+            showResetTotalConfirm = sheets.showResetTotalConfirm,
             isLoaded = true
         )
     }
 
     private data class SheetFlags(
         val showSettings: Boolean = false,
-        val showResetConfirm: Boolean = false
+        val showResetConfirm: Boolean = false,
+        val showResetTotalConfirm: Boolean = false
     )
 }
 

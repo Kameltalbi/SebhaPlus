@@ -26,6 +26,26 @@
     <string name="reset_cumulative_total">Remettre à zéro</string>
     <string name="reset_daily_confirm_title">Réinitialiser le total du jour ?</string>
     <string name="reset_daily_confirm_message">Le compteur du jour sera remis à zéro.</string>
+    <string name="reset_total_confirm_title">Réinitialiser le total cumulé ?</string>
+    <string name="reset_total_confirm_message">Le total cumulé depuis le début sera remis à zéro.</string>
+    <string name="settings_subtitle">Personnalisez votre expérience.</string>
+    <string name="settings_general_title">Général</string>
+    <string name="settings_general_subtitle">Langue et objectif du jour.</string>
+    <string name="settings_daily_goal">Objectif du jour</string>
+    <string name="settings_daily_progress_title">Progression du jour</string>
+    <string name="settings_daily_progress_subtitle">Votre avancement pour aujourd’hui.</string>
+    <string name="settings_today_label">Aujourd’hui</string>
+    <string name="settings_of_label">sur</string>
+    <string name="settings_reset_today">Réinitialiser aujourd’hui</string>
+    <string name="settings_total_stats_title">Statistiques totales</string>
+    <string name="settings_total_stats_subtitle">Votre total cumulé depuis le début.</string>
+    <string name="settings_reset_total">Réinitialiser le total</string>
+    <string name="settings_notifications_title">Notifications</string>
+    <string name="settings_notifications_subtitle">Réglages son et vibration.</string>
+    <string name="settings_hijri_title">Correction date hégirienne</string>
+    <string name="settings_hijri_subtitle">Ajustez la date hégirienne si nécessaire.</string>
+    <string name="settings_hijri_hint">Ajustez uniquement si le début du mois est annoncé différemment dans votre pays.</string>
+    <string name="settings_footer_dua">Qu’Allah accepte vos bonnes actions</string>
     <string name="confirm">Confirmer</string>
     <string name="cancel">Annuler</string>
     <string name="close">Fermer</string>
@@ -67,6 +87,10 @@
     <string name="hijri_calendar_correction_label">Correction appliquée : %1$s jour(s)</string>
     <string name="previous_month">Mois précédent</string>
     <string name="next_month">Mois suivant</string>
+    <string name="daily_dua_title">Douʿā du jour</string>
+    <string name="daily_dua_source">%1$s · %2$s</string>
+    <string name="source_type_quran">Coran</string>
+    <string name="source_type_hadith">Hadith</string>
 
     <string name="hijri_new_month_title">Nouveau mois hégirien</string>
     <string name="hijri_new_month_message">Le nouveau mois hégirien a-t-il commencé ?</string>

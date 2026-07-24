@@ -57,6 +57,7 @@ fun SebhaScreen(
     onSoundChange: (Boolean) -> Unit,
     onHijriCorrectionChange: (Int) -> Unit,
     onRequestResetDaily: () -> Unit,
+    onRequestResetTotal: () -> Unit,
     onResetDailyCount: () -> Unit,
     onResetTotalCount: () -> Unit,
     onDismissReset: () -> Unit,
@@ -151,6 +152,7 @@ fun SebhaScreen(
 
                     BottomDestination.SETTINGS -> {
                         SettingsPage(
+                            dailyCount = state.count,
                             goal = state.goal,
                             totalCount = state.totalCount,
                             languageCode = state.languageCode,
@@ -163,7 +165,7 @@ fun SebhaScreen(
                             onSoundChange = onSoundChange,
                             onHijriCorrectionChange = onHijriCorrectionChange,
                             onRequestResetDaily = onRequestResetDaily,
-                            onResetTotalCount = onResetTotalCount
+                            onRequestResetTotal = onRequestResetTotal
                         )
                     }
                 }
@@ -197,6 +199,25 @@ fun SebhaScreen(
                 text = { Text(stringResource(R.string.reset_daily_confirm_message)) },
                 confirmButton = {
                     TextButton(onClick = onResetDailyCount) {
+                        Text(stringResource(R.string.confirm))
+                    }
+                },
+                dismissButton = {
+                    TextButton(onClick = onDismissReset) {
+                        Text(stringResource(R.string.cancel))
+                    }
+                },
+                shape = RoundedCornerShape(28.dp)
+            )
+        }
+
+        if (state.showResetTotalConfirm) {
+            AlertDialog(
+                onDismissRequest = onDismissReset,
+                title = { Text(stringResource(R.string.reset_total_confirm_title)) },
+                text = { Text(stringResource(R.string.reset_total_confirm_message)) },
+                confirmButton = {
+                    TextButton(onClick = onResetTotalCount) {
                         Text(stringResource(R.string.confirm))
                     }
                 },

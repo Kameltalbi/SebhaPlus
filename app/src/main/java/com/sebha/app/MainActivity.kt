@@ -64,6 +64,7 @@ class MainActivity : ComponentActivity() {
                     onSoundChange = viewModel::setSoundEnabled,
                     onHijriCorrectionChange = viewModel::setHijriCorrection,
                     onRequestResetDaily = viewModel::requestResetConfirm,
+                    onRequestResetTotal = viewModel::requestResetTotalConfirm,
                     onResetDailyCount = viewModel::resetDailyCount,
                     onResetTotalCount = viewModel::resetTotalCount,
                     onDismissReset = viewModel::dismissResetConfirm,

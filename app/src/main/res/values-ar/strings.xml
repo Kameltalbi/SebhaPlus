@@ -25,6 +25,26 @@
     <string name="reset_cumulative_total">تصفير</string>
     <string name="reset_daily_confirm_title">إعادة تعيين مجموع اليوم؟</string>
     <string name="reset_daily_confirm_message">سيتم إرجاع عداد اليوم إلى الصفر.</string>
+    <string name="reset_total_confirm_title">إعادة تعيين المجموع التراكمي؟</string>
+    <string name="reset_total_confirm_message">سيتم تصفير المجموع التراكمي منذ البداية.</string>
+    <string name="settings_subtitle">خصّص تجربتك.</string>
+    <string name="settings_general_title">عام</string>
+    <string name="settings_general_subtitle">اللغة والهدف اليومي.</string>
+    <string name="settings_daily_goal">الهدف اليومي</string>
+    <string name="settings_daily_progress_title">تقدّم اليوم</string>
+    <string name="settings_daily_progress_subtitle">تقدّمك لهذا اليوم.</string>
+    <string name="settings_today_label">اليوم</string>
+    <string name="settings_of_label">من</string>
+    <string name="settings_reset_today">إعادة تعيين اليوم</string>
+    <string name="settings_total_stats_title">الإحصائيات الكلية</string>
+    <string name="settings_total_stats_subtitle">مجموعك التراكمي منذ البداية.</string>
+    <string name="settings_reset_total">إعادة تعيين المجموع</string>
+    <string name="settings_notifications_title">الإشعارات</string>
+    <string name="settings_notifications_subtitle">إعدادات الصوت والاهتزاز.</string>
+    <string name="settings_hijri_title">تصحيح التاريخ الهجري</string>
+    <string name="settings_hijri_subtitle">عدّل التاريخ الهجري إذا لزم الأمر.</string>
+    <string name="settings_hijri_hint">عدّل فقط إذا أُعلن بداية الشهر بشكل مختلف في بلدك.</string>
+    <string name="settings_footer_dua">تقبل الله أعمالكم الصالحة</string>
     <string name="confirm">تأكيد</string>
     <string name="cancel">إلغاء</string>
     <string name="close">إغلاق</string>
@@ -66,6 +86,10 @@
     <string name="hijri_calendar_correction_label">التصحيح المطبق: %1$s يوم</string>
     <string name="previous_month">الشهر السابق</string>
     <string name="next_month">الشهر التالي</string>
+    <string name="daily_dua_title">دعاء اليوم</string>
+    <string name="daily_dua_source">%1$s · %2$s</string>
+    <string name="source_type_quran">قرآن</string>
+    <string name="source_type_hadith">حديث</string>
 
     <string name="hijri_new_month_title">شهر هجري جديد</string>
     <string name="hijri_new_month_message">هل بدأ الشهر الهجري الجديد؟</string>

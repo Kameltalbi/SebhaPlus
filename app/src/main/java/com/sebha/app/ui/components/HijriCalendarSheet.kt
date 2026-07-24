@@ -16,10 +16,14 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowLeft
 import androidx.compose.material.icons.automirrored.outlined.KeyboardArrowRight
+import androidx.compose.material.icons.automirrored.outlined.MenuBook
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -35,11 +39,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.sebha.app.R
+import com.sebha.app.data.DailyDua
+import com.sebha.app.data.DailyDuas
+import com.sebha.app.data.SourceType
 import com.sebha.app.ui.theme.SebhaGold
 import com.sebha.app.ui.theme.SebhaPrimary
 import com.sebha.app.util.HijriDateHelper
@@ -222,5 +231,115 @@ fun HijriCalendarPage(hijriCorrectionDays: Int) {
                     }
                 }
             }
+
+            Spacer(modifier = Modifier.height(28.dp))
+
+            val todayDua = remember(todayMonth, todayDay) {
+                DailyDuas.forDate(todayMonth, todayDay)
+            }
+            if (todayDua != null) {
+                DailyDuaCard(dua = todayDua)
+            }
+    }
+}
+
+@Composable
+private fun DailyDuaCard(dua: DailyDua) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+    ) {
+        Column(modifier = Modifier.padding(20.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Box(
+                    modifier = Modifier
+                        .size(40.dp)
+                        .background(SebhaPrimary.copy(alpha = 0.1f), RoundedCornerShape(12.dp)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Outlined.MenuBook,
+                        contentDescription = null,
+                        tint = SebhaPrimary,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
+                Column(modifier = Modifier.padding(start = 12.dp)) {
+                    Text(
+                        text = stringResource(R.string.daily_dua_title),
+                        style = MaterialTheme.typography.titleMedium,
+                        color = SebhaPrimary,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                    Text(
+                        text = dua.theme,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+
+            if (dua.occasion.isNotBlank()) {
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = dua.occasion,
+                    style = MaterialTheme.typography.labelLarge,
+                    color = SebhaGold,
+                    fontWeight = FontWeight.Medium
+                )
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            Text(
+                text = dua.duaAr,
+                style = MaterialTheme.typography.titleLarge.copy(
+                    textDirection = TextDirection.Rtl
+                ),
+                color = SebhaPrimary,
+                textAlign = TextAlign.Center,
+                fontWeight = FontWeight.Medium,
+                lineHeight = 34.sp,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Text(
+                text = dua.transliteration,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.Center,
+                fontStyle = FontStyle.Italic,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Text(
+                text = dua.translationFr,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.onSurface,
+                textAlign = TextAlign.Start,
+                modifier = Modifier.fillMaxWidth()
+            )
+
+            Spacer(modifier = Modifier.height(14.dp))
+
+            Text(
+                text = stringResource(
+                    R.string.daily_dua_source,
+                    dua.source,
+                    when (dua.sourceType) {
+                        SourceType.QURAN -> stringResource(R.string.source_type_quran)
+                        SourceType.HADITH -> stringResource(R.string.source_type_hadith)
+                    }
+                ),
+                style = MaterialTheme.typography.labelMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     }
 }

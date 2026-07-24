@@ -8,6 +8,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import java.time.LocalDate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -31,6 +32,32 @@ class PreferencesRepository(private val context: Context) {
         val HIJRI_CORRECTION = intPreferencesKey("hijri_correction_days")
         val LANGUAGE = stringPreferencesKey("language_code")
         val HIJRI_PROMPT_KEY = stringPreferencesKey("hijri_month_prompt_key")
+        val LAST_COUNT_DATE = stringPreferencesKey("last_count_date")
+    }
+
+    private fun todayKey(): String = LocalDate.now().toString()
+
+    /**
+     * Resets the daily counter when the calendar day changes.
+     * The lifetime total is preserved so each day's taps accumulate.
+     */
+    suspend fun ensureDailyRollover() {
+        val today = todayKey()
+        context.sebhaDataStore.edit { prefs ->
+            val lastDate = prefs[Keys.LAST_COUNT_DATE]
+            when {
+                lastDate == null -> {
+                    prefs[Keys.LAST_COUNT_DATE] = today
+                    if (prefs[Keys.TOTAL_COUNT] == null) {
+                        prefs[Keys.TOTAL_COUNT] = prefs[Keys.COUNT] ?: 0
+                    }
+                }
+                lastDate != today -> {
+                    prefs[Keys.COUNT] = 0
+                    prefs[Keys.LAST_COUNT_DATE] = today
+                }
+            }
+        }
     }
 
     /** Cold flow of the full preference snapshot. */
@@ -38,8 +65,7 @@ class PreferencesRepository(private val context: Context) {
         val dailyCount = prefs[Keys.COUNT] ?: 0
         UserPreferences(
             count = dailyCount,
-            // Existing installations start the lifetime total from their saved count.
-            totalCount = prefs[Keys.TOTAL_COUNT] ?: dailyCount,
+            totalCount = prefs[Keys.TOTAL_COUNT] ?: 0,
             goal = prefs[Keys.GOAL] ?: 33,
             vibrationEnabled = prefs[Keys.VIBRATION] ?: true,
             soundEnabled = prefs[Keys.SOUND] ?: false,
@@ -51,9 +77,16 @@ class PreferencesRepository(private val context: Context) {
 
     /** Atomically increments both counters, including during very fast taps. */
     suspend fun incrementCounters() {
+        val today = todayKey()
         context.sebhaDataStore.edit { prefs ->
-            val dailyCount = prefs[Keys.COUNT] ?: 0
+            val lastDate = prefs[Keys.LAST_COUNT_DATE]
+            var dailyCount = prefs[Keys.COUNT] ?: 0
             val totalCount = prefs[Keys.TOTAL_COUNT] ?: dailyCount
+
+            if (lastDate != null && lastDate != today) {
+                dailyCount = 0
+            }
+            prefs[Keys.LAST_COUNT_DATE] = today
             prefs[Keys.COUNT] = dailyCount + 1
             prefs[Keys.TOTAL_COUNT] = totalCount + 1
         }
