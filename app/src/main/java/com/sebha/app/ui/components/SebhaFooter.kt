@@ -1,6 +1,9 @@
 package com.sebha.app.ui.components
 
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.CalendarMonth
@@ -18,8 +21,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.sebha.app.R
 
 /** Bottom destinations for the main navigation bar. */
@@ -40,9 +45,12 @@ fun SebhaFooter(
     modifier: Modifier = Modifier
 ) {
     NavigationBar(
-        modifier = modifier.clip(RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)),
+        modifier = modifier
+            .height(56.dp)
+            .clip(RoundedCornerShape(topStart = 18.dp, topEnd = 18.dp)),
         containerColor = MaterialTheme.colorScheme.surface,
-        tonalElevation = 2.dp
+        tonalElevation = 2.dp,
+        windowInsets = WindowInsets(0, 0, 0, 0)
     ) {
         FooterItem(
             selected = selected == BottomDestination.SEBHA,
@@ -81,12 +89,21 @@ private fun RowScope.FooterItem(
     NavigationBarItem(
         selected = selected,
         onClick = onClick,
-        icon = { Icon(imageVector = icon, contentDescription = label) },
+        icon = {
+            Icon(
+                imageVector = icon,
+                contentDescription = label,
+                modifier = Modifier.size(20.dp)
+            )
+        },
         label = {
             Text(
                 text = label,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis,
+                fontSize = 10.sp,
+                lineHeight = 12.sp,
+                fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium
             )
         },
         colors = NavigationBarItemDefaults.colors(
